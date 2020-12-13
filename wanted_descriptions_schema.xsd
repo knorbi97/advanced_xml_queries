@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:element name="wanteds">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="wanted" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="count" type="count-type" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="wanted">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="eyes" type="eyes-type" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="hair" type="hair-type" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="height" type="height-type" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="weight" type="weight-type" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="scars_and_marks" type="scars_and_marks-type" minOccurs="0" maxOccurs="1"/>    
+            </xs:all>
+            <xs:attribute name="title" type="title-type" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:simpleType name="count-type">
+        <xs:restriction base="xs:nonNegativeInteger"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="eyes-type">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="hair-type">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="height-type">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="weight-type">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="scars_and_marks-type">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="title-type">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    
+</xs:schema>

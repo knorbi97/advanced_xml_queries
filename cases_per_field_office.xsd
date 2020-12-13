@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:element name="offices">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="office" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="count" type="count-type" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="office">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="wanted" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="name-type" use="required"/>
+            <xs:attribute name="case-count" type="case-count-type" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="wanted">
+        <xs:complexType>
+            <xs:attribute name="title" type="title-type" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:simpleType name="count-type">
+        <xs:restriction base="xs:nonNegativeInteger"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="name-type">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="case-count-type">
+        <xs:restriction base="xs:nonNegativeInteger"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="title-type">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    
+</xs:schema>

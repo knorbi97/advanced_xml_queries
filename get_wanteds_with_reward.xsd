@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <xs:element name="wanteds">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="wanted" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="count" type="count-type" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="wanted">
+        <xs:complexType>
+            <xs:all>
+                <xs:element name="reward_text" type="reward_text-type" minOccurs="1" maxOccurs="1"/>
+                <xs:element name="reward_min" type="reward_min-type" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="reward_max" type="reward_max-type" minOccurs="0" maxOccurs="1"/>
+            </xs:all>
+            <xs:attribute name="title" type="title-type" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:simpleType name="count-type">
+        <xs:restriction base="xs:nonNegativeInteger"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="title-type">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="reward_text-type">
+        <xs:restriction base="xs:string"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="reward_min-type">
+        <xs:restriction base="reward-bound-type"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="reward_max-type">
+        <xs:restriction base="reward-bound-type"/>
+    </xs:simpleType>
+    
+    <xs:simpleType name="reward-bound-type">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[1-9]([0-9]{0,2})?(,)?([0-9]{3},)*([0-9]{3})? $"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+</xs:schema>
